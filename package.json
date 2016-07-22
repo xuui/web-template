@@ -1,0 +1,27 @@
+{
+  "name": "web-template",
+  "version": "0.0.1",
+  "description": "Web projects based on gulp quick start templates.",
+  "main": "template.js",
+  "scripts": {
+    "test": "gulp server",
+    "start": "node template.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xuui/web-template.git"
+  },
+  "keywords": [
+    "template"
+  ],
+  "author": "Xu.hel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xuui/web-template/issues"
+  },
+  "homepage": "https://github.com/xuui/web-template#readme",
+  "devDependencies": {
+    "browser-sync": "^2.13.0",
+    "gulp": "^3.9.1"
+  }
+}
