@@ -13,6 +13,7 @@ var config={
   js:{src:'./public/scripts/**/*',dest:'./build/scripts'},
   css:{src:'./public/styles/**/*',dest:'./build/styles'}
 };
+gulp.task('default',['less','css','uglify','imagemin']);
 gulp.task('server',function(){
   browserSync({server:{baseDir:'public'}});
   gulp.watch(['*.html','styles/**/*.css','scripts/**/*.js'],{cwd:'public'},reload);
