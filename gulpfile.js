@@ -1,12 +1,6 @@
 // gulpfile.js
-var browserSync=require('browser-sync');
-var gulp=require('gulp');
+var browserSync=require('browser-sync'),gulp=require('gulp'),imagemin=require('gulp-imagemin'),less=require('gulp-less'),minifycss=require('gulp-minify-css'),rename=require('gulp-rename'),uglify=require('gulp-uglify');
 var reload=browserSync.reload;
-var imagemin=require('gulp-imagemin');
-var less=require('gulp-less');
-var minifycss=require('gulp-minify-css');
-var rename=require('gulp-rename');
-var uglify=require('gulp-uglify');
 var config={
   less:{all:'./public/styles/**/*.less',src:'./public/styles/*.less',dest:'./build/styles',settings:{}},
   images:{src:'./public/images/**/*',dest:'./build/images'},
