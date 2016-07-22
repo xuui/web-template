@@ -2,14 +2,19 @@
 var browserSync=require('browser-sync');
 var gulp=require('gulp');
 var reload=browserSync.reload;
+var less=require('gulp-less');
 var rename=require('gulp-rename');
 var uglify=require('gulp-uglify');
 var config={
   js:{src:'./public/scripts/**/*',dest:'./build/scripts'},
+  less:{all:'./public/styles/**/*.less',src:'./public/styles/*.less',dest:'./build/styles',settings:{}}
 };
 gulp.task('server',function(){
   browserSync({server:{baseDir:'public'}});
   gulp.watch(['*.html','styles/**/*.css','scripts/**/*.js'],{cwd:'public'},reload);
+});
+gulp.task('less',function(){
+	return gulp.src(config.less.src).pipe(less(config.less.settings)).pipe(gulp.dest(config.less.dest))
 });
 gulp.task('uglify',function(){
   return gulp.src(config.js.src)
