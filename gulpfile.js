@@ -1,5 +1,5 @@
 // gulpfile.js
-var browserSync=require('browser-sync'),gulp=require('gulp'),imagemin=require('gulp-imagemin'),less=require('gulp-less'),minifycss=require('gulp-minify-css'),rename=require('gulp-rename'),uglify=require('gulp-uglify');
+var browserSync=require('browser-sync'),gulp=require('gulp'),imagemin=require('gulp-imagemin'),less=require('gulp-less'),minifycss=require('gulp-clean-css'),rename=require('gulp-rename'),uglify=require('gulp-uglify');
 var reload=browserSync.reload;
 var config={
   less:{all:'./public/styles/**/*.less',src:'./public/styles/*.less',dest:'./build/styles',settings:{}},
@@ -19,7 +19,9 @@ gulp.task('less',function(){
 	return gulp.src(config.less.src).pipe(less(config.less.settings)).pipe(gulp.dest(config.less.dest))
 });
 gulp.task('css',function(){
-  return gulp.src(config.css.src).pipe(minifycss()).pipe(gulp.dest(config.css.dest));
+  return gulp.src(config.css.src)
+  .pipe(minifycss())
+  .pipe(gulp.dest(config.css.dest));
 });
 gulp.task('uglify',function(){
   return gulp.src(config.js.src)
