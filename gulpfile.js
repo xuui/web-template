@@ -1,5 +1,12 @@
 // gulpfile.js
-var browserSync=require('browser-sync'),gulp=require('gulp'),imagemin=require('gulp-imagemin'),less=require('gulp-less'),minifycss=require('gulp-clean-css'),rename=require('gulp-rename'),uglify=require('gulp-uglify');
+var browserSync=require('browser-sync'),
+    gulp=require('gulp'),
+    imagemin=require('gulp-imagemin'),
+    less=require('gulp-less'),
+    minifycss=require('gulp-clean-css'),
+    include=require("gulp-include");,
+    rename=require('gulp-rename'),
+    uglify=require('gulp-uglify');
 var reload=browserSync.reload;
 var config={
   less:{all:'./public/styles/**/*.less',src:'./public/styles/*.less',dest:'./build/styles',settings:{}},
@@ -29,4 +36,25 @@ gulp.task('uglify',function(){
   .pipe(uglify())
   .pipe(rename({extname:'.min.js'}))
   .pipe(gulp.dest(config.js.dest));
+});
+gulp.task("inc-html", function() {
+  //console.log(' <!--=include relative/path/to/file.html --> ');
+  gulp.src("inx.html")
+    .pipe(include({extensions:"html"}))
+      .on('error', console.log)
+    .pipe(gulp.dest("dist"));
+});
+gulp.task("inc-css", function() {
+  //console.log(' /*=include relative/path/to/file.css */ ');
+  gulp.src("inx.css")
+    .pipe(include({extensions:"css"}))
+      .on('error', console.log)
+    .pipe(gulp.dest("dist"));
+});
+gulp.task("inc-js", function() {
+  //console.log(' //=include relative/path/to/file.js ');
+  gulp.src("inx.js")
+    .pipe(include({extensions:"js"}))
+      .on('error', console.log)
+    .pipe(gulp.dest("dist"));
 });

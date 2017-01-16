@@ -20,6 +20,7 @@ npm install --save-dev browser-sync
 npm install --save-dev gulp-clean-css
 npm install --save-dev gulp-file-include
 npm install --save-dev gulp-imagemin
+npm install --save-dev gulp-include
 npm install --save-dev gulp-less
 npm install --save-dev gulp-rename
 npm install --save-dev gulp-uglify
